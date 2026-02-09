@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Circle?>
+
+<VBox fx:id="blurTarget" spacing="0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.eriksson.rentalsystemhibernate3.controller.SettingsController" style="-fx-background-color: transparent;">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <VBox styleClass="main-content-panel" VBox.vgrow="ALWAYS" spacing="30">
+
+        <padding>
+            <Insets top="40" right="40" bottom="40" left="40"/>
+        </padding>
+
+        <VBox spacing="5">
+
+            <Label text="SYSTEMTERMINAL" style="-fx-text-fill: #3ECF8E; -fx-font-weight: bold; -fx-font-size: 11px; -fx-letter-spacing: 1.2px;"/>
+            <Label text="Diagnostik" style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: 800;"/>
+
+        </VBox>
+
+        <Separator prefWidth="200.0" style="-fx-opacity: 0.1;" />
+
+        <HBox spacing="25">
+
+            <VBox spacing="20" prefWidth="450" style="-fx-background-color: #111111; -fx-padding: 25; -fx-background-radius: 10; -fx-border-color: #2E2E2E; -fx-border-width: 1; -fx-border-radius: 10;">
+
+                <Label text="DATABASANSLUTNING" style="-fx-text-fill: #9BA1A6; -fx-font-size: 10px; -fx-font-weight: bold; -fx-letter-spacing: 0.5px;"/>
+
+                <GridPane vgap="15" hgap="10">
+
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100" />
+                        <ColumnConstraints hgrow="ALWAYS" />
+                    </columnConstraints>
+
+                    <children>
+
+                        <Label text="Status:" style="-fx-text-fill: #9BA1A6; -fx-font-size: 13px;" GridPane.rowIndex="0" />
+
+                        <HBox spacing="10" alignment="CENTER_LEFT" GridPane.columnIndex="1" GridPane.rowIndex="0">
+
+                            <Circle fx:id="statusCircle" radius="4" fill="#3ECF8E" />
+                            <Label fx:id="lblStatus" text="ANSLUTEN" style="-fx-text-fill: #3ECF8E; -fx-font-weight: bold;" />
+
+                        </HBox>
+
+                        <Label text="Värd (Host):" style="-fx-text-fill: #9BA1A6; -fx-font-size: 13px;" GridPane.rowIndex="1" />
+                        <Label text="localhost:3306" style="-fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <Label text="Drivrutin:" style="-fx-text-fill: #9BA1A6; -fx-font-size: 13px;" GridPane.rowIndex="2" />
+                        <Label text="MySQL Connector/J" style="-fx-text-fill: white;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                    </children>
+                </GridPane>
+
+                <Button onAction="#handleTestConnection" text="Kör anslutningstest" maxWidth="160" style="-fx-background-color: #1E1E1E; -fx-text-fill: #3ECF8E; -fx-font-size: 11px; -fx-cursor: hand; -fx-border-color: #3ECF8E; -fx-border-radius: 3;"/>
+
+            </VBox>
+
+            <VBox spacing="20" prefWidth="350" style="-fx-background-color: #111111; -fx-padding: 25; -fx-background-radius: 10; -fx-border-color: #2E2E2E; -fx-border-width: 1; -fx-border-radius: 10;">
+
+                <Label text="SYSTEMSTATISTIK" style="-fx-text-fill: #9BA1A6; -fx-font-size: 10px; -fx-font-weight: bold; -fx-letter-spacing: 0.5px;"/>
+
+                <VBox spacing="18">
+
+                    <HBox alignment="CENTER_LEFT">
+
+                        <Label text="Status Medlemmar" style="-fx-text-fill: #9BA1A6; -fx-font-size: 13px;" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="lblTotalMembers" text="Aktiv" style="-fx-text-fill: white; -fx-font-weight: bold;" />
+
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT">
+
+                        <Label text="Systemintegritet" style="-fx-text-fill: #9BA1A6; -fx-font-size: 13px;" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Label fx:id="lblActiveRentals" text="STABIL" style="-fx-text-fill: #3ECF8E; -fx-font-weight: bold;" />
+
+                    </HBox>
+                </VBox>
+
+                <Region VBox.vgrow="ALWAYS" />
+
+                <Label text="Applikationsversion: 1.0-STABLE" style="-fx-text-fill: #444; -fx-font-size: 10px;" />
+
+            </VBox>
+        </HBox>
+
+        <Region VBox.vgrow="ALWAYS" />
+
+        <HBox alignment="CENTER_RIGHT">
+
+            <Button onAction="#handleSeedData" text="Återställ Testdata" style="-fx-background-color: #1E1E1E; -fx-text-fill: white; -fx-font-size: 12px; -fx-padding: 10 25; -fx-cursor: hand; -fx-border-color: #333; -fx-border-radius: 5;"/>
+
+        </HBox>
+    </VBox>
+</VBox>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="rootPane" prefHeight="800.0" prefWidth="1280.0" stylesheets="@/style.css" xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.eriksson.rentalsystemhibernate3.controller.MainController">
+
+    <top>
+        <HBox fx:id="titleBar" onMouseClicked="#handleTitleBarClick" alignment="CENTER_RIGHT" prefHeight="32.0" styleClass="title-bar">
+
+            <children>
+
+                <Label styleClass="title-bar-text" text="WIGELL RENTAL SYSTEM">
+                    <HBox.margin>
+                        <Insets left="15.0" />
+                    </HBox.margin>
+                </Label>
+
+                <Region HBox.hgrow="ALWAYS" />
+
+                <HBox alignment="CENTER" spacing="0">
+                    <Button onAction="#handleMinimize" styleClass="window-control-btn, btn-minimize" text="—" />
+                    <Button onAction="#handleMaximize" styleClass="window-control-btn, btn-maximize" text="▢" />
+                    <Button onAction="#handleClose" styleClass="window-control-btn, btn-close" text="✕" />
+                </HBox>
+
+            </children>
+        </HBox>
+    </top>
+
+    <left>
+        <fx:include fx:id="sidebar" source="sidebar.fxml" />
+    </left>
+
+    <center>
+
+        <StackPane fx:id="mainStack">
+
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <StackPane fx:id="contentArea" />
+
+            <VBox fx:id="offlineOverlay" alignment="CENTER" spacing="20" visible="false"
+                  style="-fx-background-color: rgba(18, 18, 18, 0.85); -fx-backdrop-filter: blur(10px);">
+
+                <children>
+
+                    <Region prefHeight="50" prefWidth="50"
+                            style="-fx-background-color: #FF4D4D; -fx-shape: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'; -fx-scale-x: 2; -fx-scale-y: 2;"/>
+
+                    <Label text="CONNECTION LOST" style="-fx-text-fill: white; -fx-font-size: 24px; -fx-font-weight: bold; -fx-letter-spacing: 2px;"/>
+                    <Label text="Trying to reconnect to the database..." style="-fx-text-fill: -fx-text-muted; -fx-font-size: 14px;"/>
+
+                    <ProgressIndicator prefHeight="40" prefWidth="40" style="-fx-progress-color: #3ECF8E;"/>
+                </children>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>

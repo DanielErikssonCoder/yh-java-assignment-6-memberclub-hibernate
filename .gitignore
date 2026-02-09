@@ -1,0 +1,61 @@
+# Maven - Exkludera byggmappen där kompilerad kod hamnar
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+# Behåll Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Eclipse
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code
+.vscode/
+
+# Hibernate & Databas
+# Exkludera lokala databasfiler om du använder H2 eller SQLite lokalt
+*.db
+*.h2.db
+hibernate.log
+
+# Loggar och temporära filer
+*.log
+logs/
+temp/
+tmp/
+.kotlin
+
+# Systemfiler
+.DS_Store
+Thumbs.db

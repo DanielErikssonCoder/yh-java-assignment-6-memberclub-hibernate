@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox fx:id="rootNode" spacing="20"
+      style="-fx-background-color: #1c1c1c; -fx-background-radius: 12; -fx-border-radius: 12;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.eriksson.rentalsystemhibernate3.controller.AddComputerController" prefWidth="550" minHeight="-Infinity" maxHeight="-Infinity">
+
+    <padding>
+        <Insets top="30" right="30" bottom="30" left="30"/>
+    </padding>
+
+    <VBox spacing="5">
+        <Label text="NY ENHET" style="-fx-text-fill: #3ECF8E; -fx-font-weight: bold; -fx-font-size: 11px; -fx-letter-spacing: 1.2px;"/>
+        <Label text="Registrera i inventarie" style="-fx-text-fill: white; -fx-font-size: 22px; -fx-font-weight: 800;"/>
+    </VBox>
+
+    <VBox spacing="15">
+        <Label text="Kategori" style="-fx-text-fill: #9BA1A6;"/>
+        <ComboBox fx:id="typeComboBox" maxWidth="Infinity" />
+
+        <GridPane hgap="15" vgap="15">
+            <columnConstraints>
+                <ColumnConstraints percentWidth="50"/>
+                <ColumnConstraints percentWidth="50"/>
+            </columnConstraints>
+
+            <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                <Label text="Modell" style="-fx-text-fill: #AAAAAA;"/>
+                <TextField fx:id="modelField" promptText="t.ex. MacBook Pro"/>
+            </VBox>
+
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                <Label text="Processor" style="-fx-text-fill: #AAAAAA;"/>
+                <TextField fx:id="cpuField" promptText="t.ex. i9"/>
+            </VBox>
+
+            <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                <Label text="RAM (GB)" style="-fx-text-fill: #AAAAAA;"/>
+                <TextField fx:id="ramField" promptText="32"/>
+            </VBox>
+
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Label text="Lagring" style="-fx-text-fill: #AAAAAA;"/>
+                <TextField fx:id="ssdField" promptText="1TB SSD"/>
+            </VBox>
+
+            <VBox fx:id="gpuBox" spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                <Label text="Grafikkort" style="-fx-text-fill: #AAAAAA;"/>
+                <TextField fx:id="gpuField" promptText="RTX 4090"/>
+            </VBox>
+
+            <VBox fx:id="screenBox" spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Label text="Skärmstorlek" style="-fx-text-fill: #AAAAAA;"/>
+                <TextField fx:id="screenField" promptText="16.2"/>
+            </VBox>
+
+            <VBox fx:id="coresBox" spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="3">
+                <Label text="CPU Cores" style="-fx-text-fill: #AAAAAA;"/>
+                <TextField fx:id="coresField" promptText="16"/>
+            </VBox>
+
+            <VBox fx:id="displaysBox" spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Label text="Max skärmar" style="-fx-text-fill: #AAAAAA;"/>
+                <TextField fx:id="displaysField" promptText="3"/>
+            </VBox>
+
+            <VBox fx:id="batteryBox" spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="4">
+                <Label text="Batteritid (h)" style="-fx-text-fill: #AAAAAA;"/>
+                <TextField fx:id="batteryField" promptText="12"/>
+            </VBox>
+
+            <VBox fx:id="touchBox" spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="4" alignment="CENTER_LEFT">
+                <Label text="Touchskärm" style="-fx-text-fill: #AAAAAA;"/>
+                <CheckBox fx:id="touchCheckBox" text="Har Touch" style="-fx-text-fill: white;"/>
+            </VBox>
+
+            <VBox spacing="5" GridPane.columnIndex="0" GridPane.rowIndex="5">
+                <Label text="Timpris (kr)" style="-fx-text-fill: #AAAAAA;"/>
+                <TextField fx:id="hourlyPriceField" promptText="100"/>
+            </VBox>
+
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <Label text="Dagspris (kr)" style="-fx-text-fill: #AAAAAA;"/>
+                <TextField fx:id="dailyPriceField" promptText="800"/>
+            </VBox>
+        </GridPane>
+    </VBox>
+
+    <HBox spacing="10" alignment="CENTER_RIGHT">
+        <Button text="Avbryt" onAction="#handleCancel" style="-fx-background-color: transparent; -fx-text-fill: #AAAAAA; -fx-cursor: hand; -fx-font-weight: bold;"/>
+        <Button fx:id="saveButton" text="Spara enhet" onAction="#handleSave" styleClass="button-primary" minWidth="120" />
+    </HBox>
+
+</VBox>

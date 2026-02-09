@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Circle?>
+
+<VBox fx:id="blurTarget" spacing="0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.eriksson.rentalsystemhibernate3.controller.DashboardController" style="-fx-background-color: transparent;">
+
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <VBox styleClass="main-content-panel" VBox.vgrow="ALWAYS" spacing="30">
+
+        <padding>
+            <Insets top="40" right="40" bottom="40" left="40"/>
+        </padding>
+
+        <VBox spacing="5">
+            <Label text="SYSTEMÖVERSIKT" style="-fx-text-fill: #3ECF8E; -fx-font-weight: bold; -fx-font-size: 11px; -fx-letter-spacing: 1.2px;"/>
+            <Label text="Dashboard" style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: 800;"/>
+        </VBox>
+
+        <Separator prefWidth="200.0" style="-fx-opacity: 0.1;" />
+
+        <HBox spacing="20">
+
+            <VBox spacing="12" HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: #111111; -fx-padding: 25; -fx-background-radius: 10; -fx-border-color: #2E2E2E; -fx-border-radius: 10; -fx-border-width: 1;">
+                <Label text="TOTALA MEDLEMMAR" style="-fx-text-fill: #9BA1A6; -fx-font-size: 10px; -fx-font-weight: bold; -fx-letter-spacing: 0.5px;"/>
+                <Label fx:id="totalMembersLabel" text="0" style="-fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: 900;"/>
+            </VBox>
+
+            <VBox spacing="12" HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: #111111; -fx-padding: 25; -fx-background-radius: 10; -fx-border-color: #2E2E2E; -fx-border-radius: 10; -fx-border-width: 1;">
+                <Label text="AKTIVA UTHYRNINGAR" style="-fx-text-fill: #9BA1A6; -fx-font-size: 10px; -fx-font-weight: bold; -fx-letter-spacing: 0.5px;"/>
+                <Label fx:id="activeRentalsLabel" text="0" style="-fx-text-fill: white; -fx-font-size: 36px; -fx-font-weight: 900;"/>
+            </VBox>
+
+            <VBox spacing="12" HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: #111111; -fx-padding: 25; -fx-background-radius: 10; -fx-border-color: #2E2E2E; -fx-border-radius: 10; -fx-border-width: 1;">
+                <Label text="TOTAL OMSÄTTNING" style="-fx-text-fill: #9BA1A6; -fx-font-size: 10px; -fx-font-weight: bold; -fx-letter-spacing: 0.5px;"/>
+                <Label fx:id="revenueLabel" text="0.00 kr" style="-fx-text-fill: #3ECF8E; -fx-font-size: 32px; -fx-font-weight: 900;"/>
+            </VBox>
+        </HBox>
+
+        <HBox spacing="25" VBox.vgrow="ALWAYS">
+
+            <VBox spacing="15" HBox.hgrow="ALWAYS"
+                  style="-fx-background-color: #111111; -fx-padding: 25; -fx-background-radius: 10; -fx-border-color: #2E2E2E; -fx-border-radius: 10; -fx-border-width: 1;">
+                <Label text="Senaste transaktioner" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <ListView fx:id="recentActivityList" VBox.vgrow="ALWAYS"
+                          style="-fx-background-color: transparent; -fx-border-color: transparent; -fx-padding: 0;"/>
+            </VBox>
+
+            <VBox spacing="20" prefWidth="320"
+                  style="-fx-background-color: #111111; -fx-padding: 25; -fx-background-radius: 10; -fx-border-color: #2E2E2E; -fx-border-radius: 10; -fx-border-width: 1;">
+
+                <Label text="Lagersaldo" style="-fx-text-fill: white; -fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+                <VBox spacing="18">
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+                        <Circle radius="4" fill="#3ECF8E"/>
+                        <Label text="Gamingdatorer" style="-fx-text-fill: #9BA1A6; -fx-font-size: 13px;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="gamingCountLabel" text="0" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+                        <Circle radius="4" fill="#3ECF8E"/>
+                        <Label text="Laptops" style="-fx-text-fill: #9BA1A6; -fx-font-size: 13px;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="laptopCountLabel" text="0" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                    </HBox>
+
+                    <HBox alignment="CENTER_LEFT" spacing="12">
+                        <Circle radius="4" fill="#3ECF8E"/>
+                        <Label text="Arbetsstationer" style="-fx-text-fill: #9BA1A6; -fx-font-size: 13px;"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="workstationCountLabel" text="0" style="-fx-text-fill: white; -fx-font-weight: bold;"/>
+                    </HBox>
+                </VBox>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <Button text="Gå till Inventarie" maxWidth="Infinity" onAction="#onGoToInventory"
+                        style="-fx-background-color: #1E1E1E; -fx-text-fill: white; -fx-font-size: 11px; -fx-cursor: hand; -fx-border-color: #333333; -fx-border-radius: 4;"/>
+
+            </VBox>
+        </HBox>
+    </VBox>
+</VBox>

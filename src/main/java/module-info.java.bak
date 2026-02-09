@@ -1,0 +1,28 @@
+module com.eriksson.rentalsystemhibernate3 {
+
+    // REQUIRED MODULES
+    requires javafx.controls;
+    requires javafx.fxml;
+    requires jakarta.persistence;
+    requires org.hibernate.orm.core;
+    requires java.naming;
+    requires java.sql;
+    requires org.jfxtras.styles.jmetro;
+
+    // Hibernate needs access to entities, and JavaFX (base) needs them for TableView
+    opens com.eriksson.rentalsystemhibernate3.entity to org.hibernate.orm.core, javafx.base;
+
+    // UI package needs to be open for JavaFX launcher
+    opens com.eriksson.rentalsystemhibernate3.ui to javafx.graphics, javafx.fxml;
+
+    // Controller package needs to be open for FXML loader
+    opens com.eriksson.rentalsystemhibernate3.controller to javafx.fxml;
+
+    // If FXML files are located in the root package
+    opens com.eriksson.rentalsystemhibernate3 to javafx.fxml;
+
+    // EXPORT PACKAGES (Make them available to other modules)
+    exports com.eriksson.rentalsystemhibernate3;
+    exports com.eriksson.rentalsystemhibernate3.entity;
+    exports com.eriksson.rentalsystemhibernate3.ui;
+}
