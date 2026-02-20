@@ -9,18 +9,23 @@ import org.hibernate.SessionFactory;
 public class Main {
 
     /**
-     * Initializes services, runs operations, handles exceptions, shuts down
+     * Starts the application: sets up Hibernate, creates repositories and services,
+     * runs a series of test operations (member‑registration, adding a gaming PC,
+     * renting it) and finally prints all rentals in the database.
      */
     static void main(String[] args) {
 
+        // Obtain a shared SessionFactory for all DAOs
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
+        // Repository layer. One per entity type, responsible for direct DB access
         MemberRepository memberRepo = new MemberRepositoryImpl(sessionFactory);
         GamingComputerRepository gamingRepo = new GamingComputerRepositoryImpl(sessionFactory);
         LaptopRepository laptopRepo = new LaptopRepositoryImpl(sessionFactory);
         WorkstationRepository workstationRepo = new WorkstationRepositoryImpl(sessionFactory);
         RentalRepository rentalRepo = new RentalRepositoryImpl(sessionFactory);
 
+        // Service layer. Business logic on top of repositories
         MemberService memberService = new MemberService(memberRepo, rentalRepo);
         GamingComputerService gamingComputerService = new GamingComputerService(gamingRepo);
         LaptopService laptopService = new LaptopService(laptopRepo);

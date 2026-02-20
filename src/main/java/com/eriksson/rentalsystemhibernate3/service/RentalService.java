@@ -132,12 +132,17 @@ public class RentalService {
 
         // Calculate rental length in days or hours, minimum one unit
         if (rental.isDailyRate()) {
+
             durationUsed = ChronoUnit.DAYS.between(start, now);
+
             if (durationUsed <= 0) {
                 durationUsed = 1;
             }
+
         } else {
+
             durationUsed = ChronoUnit.HOURS.between(start, now);
+
             if (durationUsed <= 0) {
                 durationUsed = 1;
             }

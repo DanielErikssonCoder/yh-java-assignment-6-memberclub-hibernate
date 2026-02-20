@@ -39,6 +39,7 @@ public class RentalServiceTest {
     // TEST 1: Successful rental
     @Test
     public void createRental_success_gamingComputer() {
+
         Member member = new Member("Test", "Testsson", "test@test.com");
         GamingComputer gc = new GamingComputer("ROG", "AMD", 32, "1TB", "RTX 5080", 50.0, 100.0);
 
@@ -62,13 +63,13 @@ public class RentalServiceTest {
     // TEST 2: Member does not exist
     @Test
     public void createRental_memberNotFound_throwException() {
+
         when(rentalRepo.isObjectRented(1L, RentalType.GAMING_COMPUTER)).thenReturn(false);
         when(memberRepo.findById(99L)).thenReturn(null);
 
         EntityNotFoundException ex = assertThrows(EntityNotFoundException.class, () ->
                 rentalService.createRental(99L, 1L, RentalType.GAMING_COMPUTER, 1, true)
         );
-        // Tar bort contains-kollen för att undvika språkfel. Typen räcker.
     }
 
     // TEST 3: Object is already rented
@@ -79,7 +80,6 @@ public class RentalServiceTest {
         ItemAlreadyRentedException ex = assertThrows(ItemAlreadyRentedException.class, () ->
                 rentalService.createRental(1L, 1L, RentalType.GAMING_COMPUTER, 1, true)
         );
-        // FIX: Tog bort assertTrue(contains(...)) eftersom meddelandet kan variera
     }
 
     // TEST 4: Computer does not exist
@@ -146,6 +146,7 @@ public class RentalServiceTest {
     // TEST 8: Return already returned
     @Test
     void returnRental_alreadyReturned_throwsException() {
+
         Rental rental = new Rental();
         rental.setEndDate(LocalDateTime.now().minusDays(1));
 
