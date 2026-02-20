@@ -160,6 +160,7 @@ public class RentalServiceTest {
     // TEST 9: Return on time
     @Test
     void returnRental_onTime_calculatesDailyPrice() {
+
         Rental rental = new Rental();
         rental.setStartDate(LocalDateTime.now().minusDays(2));
         rental.setEstimatedReturnDate(LocalDateTime.now().plusDays(1));
@@ -183,6 +184,7 @@ public class RentalServiceTest {
     // TEST 10: Return late
     @Test
     void returnRental_late_addsPenaltyFee() {
+
         Rental rental = new Rental();
         rental.setStartDate(LocalDateTime.now().minusDays(5));
         rental.setEstimatedReturnDate(LocalDateTime.now().minusDays(1)); // Late

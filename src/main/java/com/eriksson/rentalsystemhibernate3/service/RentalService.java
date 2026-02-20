@@ -36,7 +36,7 @@ public class RentalService {
     /**
      * Creates a new rental after validating all constraints
      */
-    public void createRental(Long memberId, Long computerId, RentalType type, int duration, boolean isDaily) {
+    public synchronized void createRental(Long memberId, Long computerId, RentalType type, int duration, boolean isDaily) {
 
         if (duration <= 0) {
             throw new InvalidRentalDataException("Varaktigheten måste vara minst 1.");
